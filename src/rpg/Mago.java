@@ -14,7 +14,7 @@ public interface Mago {
             
             
             public int chamaataque(int i);
-            public boolean verificamp(int i);
+          
             int GreatFireball();
             int Fireball();
             int PrismaAtack();

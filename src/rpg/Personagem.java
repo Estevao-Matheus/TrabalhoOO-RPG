@@ -30,6 +30,8 @@ public class Personagem {
         this.Nome = Nome;
         this.ATK = ATK;
         this.DEF = DEF;
+        this.HP = 100;
+        this.MP = 100;
     }
 
     public Arma getArma() {

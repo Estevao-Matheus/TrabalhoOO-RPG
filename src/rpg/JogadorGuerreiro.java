@@ -13,7 +13,7 @@ public class JogadorGuerreiro extends Jogador implements Guerreiro {
     
     final int MovimentoBase = 4;
           float AtaqueBase = 10.75f;
-          String Ataques[]= {"Thunedring Atack(40)","Power Atack20)","Berserk(25)","Atack(10)"};
+          String Ataques[]= {"Atack(10)","Power Atack20)","Berserk(25)","Thunedring Atack(40)"};
     
     public JogadorGuerreiro(String Nome, int ATK, int DEF) {
         super(Nome, ATK, DEF);
@@ -26,10 +26,10 @@ public class JogadorGuerreiro extends Jogador implements Guerreiro {
          System.out.println("ATAQUES");
         for(i=0;i<Ataques.length;i++)
         {
-            System.out.println(i+"-"+Ataques[i]);
+            System.out.println((i+1)+"-"+Ataques[i]);
         }
     }
-    @Override
+    
     public boolean verificamp(int i)
     {
         if(this.MP<i){
@@ -73,6 +73,7 @@ public class JogadorGuerreiro extends Jogador implements Guerreiro {
             dano = (int) (this.arma.AtkBase+this.ATK+this.AtaqueBase);
             dano = (int) (dano + (dano*0.40));
             this.MP=this.MP-40;
+            System.out.println("Thundering Attack!");
             return dano;
            }
     }
@@ -88,6 +89,7 @@ public class JogadorGuerreiro extends Jogador implements Guerreiro {
             dano = (int) (this.arma.AtkBase+this.ATK+this.AtaqueBase);
             dano = (int) (dano + (dano*0.25));
             this.MP=this.MP-25;
+            System.out.println("Berserk!");
             return dano;
            }
         
@@ -104,6 +106,7 @@ public class JogadorGuerreiro extends Jogador implements Guerreiro {
             dano = (int) (this.arma.AtkBase+this.ATK+this.AtaqueBase);
             dano = (int) (dano + (dano*0.20));
             this.MP=this.MP-20;
+            System.out.println("Power Atack!");
             return dano;
            }
         
@@ -113,6 +116,7 @@ public class JogadorGuerreiro extends Jogador implements Guerreiro {
     public int Atack(){ 
         int dano;    
         dano = (int) (this.arma.AtkBase+this.ATK+this.AtaqueBase);
+        System.out.println("Atack!");
         return dano;
     }
 }

@@ -14,7 +14,7 @@ public interface Arqueiro {
             
             
             public int chamaataque(int i);
-            public boolean verificamp(int i);
+           
             int FlameArrow();
             int GreatArrow();
             int MultipleArrow();

@@ -25,7 +25,7 @@ public class JogadorArqueiro extends Jogador implements Arqueiro {
          System.out.println("ATAQUES");
         for(i=0;i<Ataques.length;i++)
         {
-            System.out.println(i+"-"+Ataques[i]);
+            System.out.println((i+1)+"-"+Ataques[i]);
         }
     }
     @Override
@@ -103,7 +103,7 @@ public class JogadorArqueiro extends Jogador implements Arqueiro {
           return dano;
     }
 
-    @Override
+
     public boolean verificamp(int i) {
        if(this.MP<i){
             return true;

@@ -14,7 +14,7 @@ public interface Clerigo {
            
             
             public int chamaataque(int i);
-            public boolean verificamp(int i);
+            
             int Blessing();
             int PowerAtack();
             int HolyAtack();

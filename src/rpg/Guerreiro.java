@@ -14,7 +14,7 @@ public interface Guerreiro {
             
             
             public int chamaataque(int i);
-            public boolean verificamp(int i);
+           
             
             int ThunderingAtack();
             int Berserk();

@@ -41,58 +41,39 @@ public class NPCClerigo extends NPC implements Clerigo {
         return dano;
     }
     
-    @Override
-    public boolean verificamp(int i) {
-        if(this.MP<i){
-            return true;
-        }else
-            return false;
-    }
+   
     
 
     @Override
     public int Blessing() {
-           if(verificamp(40)==true)
-            {
-                return -1;
-            }else
-            {
             int dano; 
             dano = (int) (this.arma.AtkBase+this.ATK+this.AtaqueBase);
             dano = (int) (dano + (dano*0.40));
             this.MP=this.MP-40;
             return dano;
-           }
+           
     }
 
     @Override
     public int PowerAtack() {
-        if(verificamp(25)==true)
-            {
-                return -1;
-            }else
-            {
+      
             int dano; 
             dano = (int) (this.arma.AtkBase+this.ATK+this.AtaqueBase);
             dano = (int) (dano + (dano*0.25));
             this.MP=this.MP-25;
             return dano;
-            }
+            
     }
 
     @Override
     public int HolyAtack() {
-        if(verificamp(20)==true)
-            {
-                return -1;
-            }else
-            {
+        
             int dano; 
             dano = (int) (this.arma.AtkBase+this.ATK+this.AtaqueBase);
             dano = (int) (dano + (dano*0.20));
             this.MP=this.MP-20;
             return dano;
-           }
+           
     }
 
     @Override
