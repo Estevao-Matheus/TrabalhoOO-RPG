@@ -19,8 +19,8 @@ public class Personagem {
                DEF; 
         
         int HP,
-            MP;    
-    
+            MP,    
+            experiencia=0;
         Arma  arma;
         Armadura armadura;
         Escudo   escudo;

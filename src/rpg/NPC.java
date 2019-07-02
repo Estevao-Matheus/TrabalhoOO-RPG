@@ -15,6 +15,7 @@ public class NPC extends Personagem {
     
     public NPC(String Nome, int ATK, int DEF) {
         super(Nome, ATK, DEF);
+        this.experiencia=600;
     }
     Random rand = new Random();
     
@@ -23,4 +24,10 @@ public class NPC extends Personagem {
         int i = rand.nextInt(this.equips.size());
         jogador.addEquipamento(this.equips.get(i));
     }
+    public void passaxp (Jogador jogador)
+    {
+        int xp = (int) (this.experiencia * 0.30);
+        jogador.ganhaexperiencia(xp);
+        
+    }    
 }

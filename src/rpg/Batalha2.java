@@ -5,9 +5,12 @@
  */
 package rpg;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +31,7 @@ public class Batalha2 {
         
     }
     
-    public void batalhar()
+    public void batalhar() throws IOException
     {
        
         while(batalha == true)
@@ -43,6 +46,7 @@ public class Batalha2 {
          } 
             
           
+            
           turnojogador();
           verificainimigos();
           turnoinimigo();  
@@ -63,7 +67,8 @@ public class Batalha2 {
             {
                 
                 System.out.println("Inimigo "+inimigos.get(i).Nome+" morto!");
-               // inimigos.get(i).loot(jogador);
+                inimigos.get(i).loot(jogador);
+                inimigos.get(i).passaxp(jogador);
                 inimigos.remove(i);
                 
             }
@@ -72,7 +77,7 @@ public class Batalha2 {
         
     }    
         
-    public void turnojogador()
+    public void turnojogador() throws IOException
     {
         
         int i,
@@ -89,13 +94,14 @@ public class Batalha2 {
             System.out.println("Escolha:");
             System.out.println("1-Ataque:");
             System.out.println("2-Itens:");
+            
             opp=sc1.nextInt();
             if(opp==1)
             { 
                 System.out.println("Qual inimigo deseja atacar:");
                 for(i=0;i<inimigos.size();i++)
                 {
-                    System.out.println(i+" - "+inimigos.get(i).Nome+"HP: "+inimigos.get(i).HP);
+                    System.out.println(i+" - "+inimigos.get(i).Nome+" HP: "+inimigos.get(i).HP);
                 }
                 opatk =sc1.nextInt();
                 jogador.mostraAtaque();
@@ -106,16 +112,17 @@ public class Batalha2 {
                     System.out.println("Sem MP suficiente para esse ataque");
                 }else
                 {
-                    int defesainimigo= (int) ((inimigos.get(i).armadura.DefBase+inimigos.get(i).escudo.DefBase+inimigos.get(i).DEF)/3);
-                    inimigos.get(opatk).HP = inimigos.get(opatk).HP - (dano-defesainimigo);
-                    System.out.println("Inimigo "+inimigos.get(opatk).Nome+" sofreu "+dano+" de dano!");
+                   // int defesainimigo= (int) ((inimigos.get(i).armadura.DefBase+inimigos.get(i).escudo.DefBase+inimigos.get(i).DEF)/3);
+                    inimigos.get(opatk).HP = inimigos.get(opatk).HP - dano;
+                    System.out.println("Inimigo "+inimigos.get(opatk).Nome+" sofreu " +dano+ " de dano!");
                     turno=false;
                 }
            }if(opp==2)
            {
                jogador.equipa();
                turno=false;
-           }    
+           }  
+           
        }
     }
     public void turnoinimigo()
@@ -129,20 +136,20 @@ public class Batalha2 {
             if(inimigos.get(i).MP>60)
             {
                 rand = random.nextInt(4)+2;
-                dano =inimigos.get(i).chamaataque(rand);
-                jogador.HP=jogador.HP-(dano-defesajogador);
-                System.out.println("Jogador sofreu "+dano+"de dano!");
+                dano =inimigos.get(i).chamaataque(rand)-defesajogador;
+                jogador.HP=jogador.HP-dano;
+                System.out.println("Jogador sofreu "+dano+" de dano!");
             }else if(inimigos.get(i).MP<=60&&inimigos.get(i).MP>=0)
             {
                 rand = random.nextInt(4)+2;
-                dano =inimigos.get(i).chamaataque(rand);
-                jogador.HP=jogador.HP-(dano-defesajogador);
-                System.out.println("Jogador sofreu "+dano+"de dano!");
+                dano =inimigos.get(i).chamaataque(rand)-defesajogador;
+                jogador.HP=jogador.HP-(dano);
+                System.out.println("Jogador sofreu "+dano+" de dano!");
             }else
             {
-                dano=inimigos.get(i).chamaataque(1);
+                dano=inimigos.get(i).chamaataque(1)-defesajogador;
                 jogador.HP=jogador.HP-(dano-defesajogador);
-                System.out.println("Jogador sofreu "+dano+"de dano!");
+                System.out.println("Jogador sofreu "+dano+" de dano!");
             }
                 
         }

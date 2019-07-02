@@ -5,6 +5,9 @@
  */
 package rpg;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -13,13 +16,13 @@ import java.util.Scanner;
  */
 public class Jogador extends Personagem {
       int nivel;
-      int experiencia;
+      
       Scanner sc1 = new Scanner(System.in);
 
     public Jogador(String Nome, int ATK, int DEF) {
         super(Nome, ATK, DEF);
         this.nivel=1;
-        this.experiencia=0;
+        
     }
       
       public void equipa ()
@@ -66,4 +69,5 @@ public class Jogador extends Personagem {
       {
           
       }
+    
 }
