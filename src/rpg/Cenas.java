@@ -44,9 +44,9 @@ public class Cenas {
     }
     public void inimigos()
     {
-         NPCGuerreiro npc1 = new NPCGuerreiro("Duncan - Guerreiro",10,10);
-         NPCArqueiro  npc2 =  new NPCArqueiro("Gedard - Arqueiro",10,10);
-         NPCMago      npc3   = new NPCMago("Elrond Mago",10,10);
+         NPCGuerreiro npc1 = new NPCGuerreiro("Duncan ",10,10);
+         NPCArqueiro  npc2 =  new NPCArqueiro("Gedard ",10,10);
+         NPCMago      npc3   = new NPCMago("Elrond ",10,10);
          Arma espada = new Arma("Espada Longa","Cortante",10,2);
          Armadura armadura = new Armadura("Couraça de Dragão","Armadura Pesada",9);
          Escudo escudo = new Escudo("Couraça de Dragão","Armadura Pesada",9);

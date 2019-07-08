@@ -34,8 +34,9 @@ public class RPG {
                JogadorGuerreiro jogador = new JogadorGuerreiro("",0,0);;
                
                System.out.println("=====================Rules of Elfheim================================");
-               System.out.println("-    1- Novo Jogo -                                                 -");
-               System.out.println("-    2- Carregar Status -                                           -");
+               System.out.println("-                                                                   -");
+               System.out.println("-                    1- Novo Jogo -                                 -");
+               System.out.println("-                                                                   -");
                System.out.println("=====================================================================");
                op=sc1.nextInt();
                if(op==1)

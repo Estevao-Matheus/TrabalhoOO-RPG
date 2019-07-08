@@ -92,20 +92,21 @@ public class Batalha2 {
         boolean turno=true;
         while(turno==true)
         {
-            System.out.println("====================================");
-            System.out.println("-------"+jogador.Nome+"----------");
-            System.out.println("------- HP:"+jogador.HP+"--------");
-            System.out.println("------- MP:"+jogador.MP+"--------");
-            System.out.println("Escolha:");
-            System.out.println("1-Ataque:");
-            System.out.println("2-Itens:");
-            System.out.println("3-Salvar");
-            System.out.println("====================================");
+            System.out.println("¦====================================¦");
+            System.out.println("¦"+jogador.Nome+"");
+            System.out.println("¦ HP:"+jogador.HP+"");
+            System.out.println("¦ MP:"+jogador.MP+"");
+            System.out.println("¦Escolha:                            ¦");
+            System.out.println("¦1-Ataque:                           ¦");
+            System.out.println("¦2-Itens:                            ¦");
+            System.out.println("¦3-Salvar                            ¦");
+            System.out.println("¦====================================¦");
             opp=sc1.nextInt();
             if(opp==1)
             { 
                 System.out.println("====================================");
                 System.out.println("Qual inimigo deseja atacar:");
+                System.out.println("====================================");
                 for(i=0;i<inimigos.size();i++)
                 {
                     System.out.println(i+" - "+inimigos.get(i).Nome+" HP: "+inimigos.get(i).HP);
@@ -115,6 +116,7 @@ public class Batalha2 {
                 jogador.mostraAtaque();
                 op=sc1.nextInt();        
                 dano = jogador.chamaataque(op);
+                System.out.println("====================================");
                 if(dano==-1)
                 {
                     System.out.println("Sem MP suficiente para esse ataque");
