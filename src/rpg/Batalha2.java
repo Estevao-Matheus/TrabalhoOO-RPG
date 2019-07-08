@@ -5,7 +5,11 @@
  */
 package rpg;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -88,21 +92,25 @@ public class Batalha2 {
         boolean turno=true;
         while(turno==true)
         {
+            System.out.println("====================================");
             System.out.println("-------"+jogador.Nome+"----------");
             System.out.println("------- HP:"+jogador.HP+"--------");
             System.out.println("------- MP:"+jogador.MP+"--------");
             System.out.println("Escolha:");
             System.out.println("1-Ataque:");
             System.out.println("2-Itens:");
-            
+            System.out.println("3-Salvar");
+            System.out.println("====================================");
             opp=sc1.nextInt();
             if(opp==1)
             { 
+                System.out.println("====================================");
                 System.out.println("Qual inimigo deseja atacar:");
                 for(i=0;i<inimigos.size();i++)
                 {
                     System.out.println(i+" - "+inimigos.get(i).Nome+" HP: "+inimigos.get(i).HP);
                 }
+                System.out.println("====================================");
                 opatk =sc1.nextInt();
                 jogador.mostraAtaque();
                 op=sc1.nextInt();        
@@ -112,7 +120,8 @@ public class Batalha2 {
                     System.out.println("Sem MP suficiente para esse ataque");
                 }else
                 {
-                   // int defesainimigo= (int) ((inimigos.get(i).armadura.DefBase+inimigos.get(i).escudo.DefBase+inimigos.get(i).DEF)/3);
+                    int defesainimigo= (int) ((inimigos.get(opatk).armadura.DefBase+inimigos.get(opatk).escudo.DefBase+inimigos.get(opatk).DEF)/3);
+                    dano = (dano-defesainimigo);
                     inimigos.get(opatk).HP = inimigos.get(opatk).HP - dano;
                     System.out.println("Inimigo "+inimigos.get(opatk).Nome+" sofreu " +dano+ " de dano!");
                     turno=false;
@@ -121,7 +130,11 @@ public class Batalha2 {
            {
                jogador.equipa();
                turno=false;
-           }  
+           }
+           if(opp==3)
+           {
+             //  salvar();
+           }
            
        }
     }
@@ -137,24 +150,59 @@ public class Batalha2 {
             {
                 rand = random.nextInt(4)+2;
                 dano =inimigos.get(i).chamaataque(rand)-defesajogador;
+                if(dano<0)
+                {
+                    dano=0;
+                }
                 jogador.HP=jogador.HP-dano;
                 System.out.println("Jogador sofreu "+dano+" de dano!");
             }else if(inimigos.get(i).MP<=60&&inimigos.get(i).MP>=0)
             {
                 rand = random.nextInt(4)+2;
                 dano =inimigos.get(i).chamaataque(rand)-defesajogador;
+                if(dano<0)
+                {
+                    dano=0;
+                }
                 jogador.HP=jogador.HP-(dano);
                 System.out.println("Jogador sofreu "+dano+" de dano!");
             }else
             {
                 dano=inimigos.get(i).chamaataque(1)-defesajogador;
+                if(dano<0)
+                {
+                    dano=0;
+                }
                 jogador.HP=jogador.HP-(dano-defesajogador);
                 System.out.println("Jogador sofreu "+dano+" de dano!");
             }
                 
         }
     }   
-        
+ /*   public void salvar()
+    {
+       
+     try { 
+            FileOutputStream f = new FileOutputStream(new File("jogadorsave.txt"));
+                            ObjectOutputStream o = new ObjectOutputStream(f);
+
+                            // Write objects to file
+                            o.writeObject(jogador);
+                            o.close();
+                            f.close();
+    }catch (FileNotFoundException e) {
+			System.out.println("File not found");
+		} catch (IOException ex) {
+                Logger.getLogger(Batalha2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            // TODO Auto-generated catch block
+            
+            // TODO Auto-generated catch block
+            
+}
+*/
+
+
 }
          
 

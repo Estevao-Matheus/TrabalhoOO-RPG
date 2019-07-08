@@ -6,6 +6,11 @@
 package rpg;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,10 +33,10 @@ public class RPG {
                Arma martelo = new Arma("Martelo de Batalha","contusão",12,2); 
                JogadorGuerreiro jogador = new JogadorGuerreiro("",0,0);;
                
-               System.out.println("---------------------------------------------------------------------");
+               System.out.println("=====================Rules of Elfheim================================");
                System.out.println("-    1- Novo Jogo -                                                 -");
                System.out.println("-    2- Carregar Status -                                           -");
-               System.out.println("_____________________________________________________________________");
+               System.out.println("=====================================================================");
                op=sc1.nextInt();
                if(op==1)
                {
@@ -45,13 +50,28 @@ public class RPG {
                    
                }if(op==2)
                {
-                  // BufferedReader buffRead = new BufferedReader("d:\\jogador.txt");
+                  try {
+			
+
+			FileInputStream fi = new FileInputStream(new File("myObjects.txt"));
+			ObjectInputStream oi = new ObjectInputStream(fi);
+
+			// Read objects
+                        jogador = (JogadorGuerreiro) oi.readObject();
+			oi.close();
+			fi.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+		} catch (IOException e) {
+			System.out.println("Error initializing stream");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
                }
                  
-               Cenas cena1 = new Cenas(jogador,"Depois de quase 100 anos de guerra finalmente uma trégua parecia estar proxima"
-                       + "Depois de meses nas trincheiras do castelo Von Hoegarth voce finalmente pode voltar para casa e é nisso"
-                       + "que você pensao tempo todo, mas derrepente sua diligencia é parada e você vê alguns homens, bandidos"
-                       + "roubando para sobreviver derrotados do exército de Britania, deixe que eles tentem a sorte");
+               Cenas cena1 = new Cenas(jogador,"Depois de quase 100 anos de guerra finalmente uma trégua parecia estar proxima;Depois de meses nas trincheiras do castelo Von Hoegarth voce finalmente pode voltar para casa e é nisso;que você pensao tempo todo, mas derrepente sua diligencia é parada e você vê alguns homens, bandidos;roubando para sobreviver derrotados do exército de Britania, deixe que eles tentem a sorte");
                
              cena1.run();
                

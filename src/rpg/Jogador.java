@@ -38,15 +38,21 @@ public class Jogador extends Personagem {
             op = sc1.nextInt();
             if(equips.get(op)instanceof Arma)
             {
+                Arma armaaux=this.arma;
                 this.arma= (Arma) equips.get(op);
+                equips.add(armaaux);
             }
             if(equips.get(op)instanceof Armadura)
             {
+                Armadura armaduraaux=this.armadura;
                 this.armadura= (Armadura) equips.get(op);
+                equips.add(armaduraaux);
             }
             if(equips.get(op)instanceof Escudo)
             {
+                Escudo escudoaux = this.escudo;
                 this.escudo= (Escudo) equips.get(op);
+                equips.add(escudoaux);
             }
         }
       

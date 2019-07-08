@@ -28,6 +28,7 @@ public class NPC extends Personagem {
     {
         int xp = (int) (this.experiencia * 0.30);
         jogador.ganhaexperiencia(xp);
+        System.out.println("Voce Ganhou "+xp+" pontos de experiencia");
         
     }    
 }

@@ -5,7 +5,11 @@
  */
 package rpg;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,9 +29,17 @@ public class Cenas {
     public void run()
     {
         inimigos();
-        System.out.println(" "+textocena);
+        String[] textoSeparado = textocena.split(";");
+        for(int i=0;i<textoSeparado.length;i++)
+        {    
+          System.out.println(textoSeparado[i]);
+        }
         batalha = new Batalha2(jogador,inimigos);
-        batalha.batalhar();
+            try {
+                batalha.batalhar();
+            } catch (IOException ex) {
+                Logger.getLogger(Cenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
     }
     public void inimigos()
